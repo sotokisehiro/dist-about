@@ -3,9 +3,9 @@
     X00OxxddddddddddddddddddddddddxxkO0KX                     
 +*ddd==dddddddddddddddddddddddxddd00ddddxdk0K*+               
     ?XK0OkxxdddddxddddxdddddddddddxxxkO0K?                    
-             -=XK0...xddddd...kO0=-                      [DEVICE]
-@OKXNKK:            .....              *NK00kx@          [CPU]
-dddxddxk+:0KN,,                  WN*00OxxdddddN          [MEMORY]
+             -=XK0...xddddd...kO0=-                [DEVICE]
+@OKXNKK:            .....              *NK00kx@    [CPU]
+dddxddxk+:0KN,,                  WN*00OxxdddddN    [MEMORY]
 dddddddddxddddxkO?K*+    +*K0OxddddddddddddddNN               
 #/dxddx0*+K-Oxddddxd)    *dddddxddk0KK0kddxdddN               
 ddxdx+/    \-W0xddxd)    (dxodxo+*/   +*NOodddN               
