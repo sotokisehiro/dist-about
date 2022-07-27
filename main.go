@@ -2,7 +2,6 @@ package main
 
 import (
 	"fmt"
-	"io/ioutil"
 	"strconv"
 	"strings"
 
@@ -19,11 +18,29 @@ func deviceInfoMem() (int, int, float64) {
 }
 
 func main() {
-	bytes, err := ioutil.ReadFile("./aa.txt")
-	if err != nil {
-		panic(err)
-	}
-	template := string(bytes)
+	template := `                    ......                                    
+            XK0OxxddddddddxxkOKKN                             
+    X00OxxddddddddddddddddddddddddxxkO0KX                     
++*ddd==dddddddddddddddddddddddxddd00ddddxdk0K*+               
+    ?XK0OkxxdddddxddddxdddddddddddxxxkO0K?                    
+             -=XK0...xddddd...kO0=-                [DEVICE]
+@OKXNKK:            .....              *NK00kx@    [CPU]
+dddxddxk+:0KN,,                  WN*00OxxdddddN    [MEMORY]
+dddddddddxddddxkO?K*+    +*K0OxddddddddddddddNN               
+#/dxddx0*+K-Oxddddxd)    *dddddxddk0KK0kddxdddN               
+ddxdx+/    \-W0xddxd)    (dxodxo+*/   +*NOodddN               
+dddx/        **KdxdO,    (oxdxx/         \xdxdN               
+dxd/          <kddxd)    (ddddx           \xddN               
+ddx/           ,ddxd)    (dxdd;           [xddN               
+ddd?           ?xdxd)    (dddd?           /-ddN               
+dxdx?         =xddxd)    (ddddx0         /-xddX               
+dddxk>      <xxddxdO)    (dxdddKL>      <KddxdN               
+ddxddx*N*+?=Nxddxdxd)    (dxdddddO*+?L=XOdxdddN               
+{dddddddddddddddddxd)    (dxddddddddxxddddxddxW               
+  :+KKOkxddddxxddddx)    (dddoxddddddxkO0KW+:/                
+           :+0Okxddx*    *ddddxkOKW+:.                        
+                 @*+*    *+*@.                                
+`
 	vmT, vmF, vmP := deviceInfoMem()
 	template = strings.Replace(template, "[DEVICE]", "OS"+gocolor.Defalt(": open.Yellow.os")+"\u001b[33m", 1)
 	template = strings.Replace(template, "[MEMORY]", "Memory"+gocolor.Defalt(": "+fmt.Sprint(vmT-vmF)+"MiB/"+fmt.Sprint(vmT)+"MiB ("+strconv.FormatFloat(vmP, 'f', 2, 64)+"% Used)")+"\u001b[33m", 1)
