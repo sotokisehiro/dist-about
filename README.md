@@ -16,8 +16,6 @@ go build -o ./dist-about main.go #Linux
 go build -o ./dist-about.exe main.go #Windows
 ```
 
-**`aa.txt` must be in the same directory.**
-
 ## Use
 
 ```bash
