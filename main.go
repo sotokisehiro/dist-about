@@ -43,7 +43,7 @@ ddxddx*N*+?=Nxddxdxd)    (dxdddddO*+?L=XOdxdddN
 `
 	vmT, vmF, vmP := deviceInfoMem()
 	template = strings.Replace(template, "[DEVICE]", "OS"+gocolor.Defalt(": open.Yellow.os")+"\u001b[33m", 1)
-	template = strings.Replace(template, "[MEMORY]", "Memory"+gocolor.Defalt(": "+fmt.Sprint(vmT-vmF)+"MiB/"+fmt.Sprint(vmT)+"MiB ("+strconv.FormatFloat(vmP, 'f', 2, 64)+"% Used)")+"\u001b[33m", 1)
+	template = strings.Replace(template, "[MEMORY]", "Memory"+gocolor.Defalt(": "+fmt.Sprint((vmT-vmF)/1000)+"MiB/"+fmt.Sprint(vmT/1000)+"MiB ("+strconv.FormatFloat(vmP, 'f', 2, 64)+"% Used)")+"\u001b[33m", 1)
 	infos, _ := cpu.Info()
 	for _, info := range infos {
 		template = strings.Replace(template, "[CPU]", strings.Replace("CPU"+gocolor.Defalt(": "+info.ModelName)+"\u001b[33m", "       ", "", 1), 1) // Important space
