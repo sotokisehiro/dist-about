@@ -18,13 +18,16 @@ jobs:
           go-version: 1.18
       - name: Build Go
         run: |
-          GOOS=linux GOARCH=amd64 go build -o dist/amd64/dist-about .
-          GOOS=linux GOARCH=arm64 go build -o dist/arm64/dist-about .
+          GOOS=linux GOARCH=amd64 go build -o dist/dist-about_amd64 .
+          GOOS=linux GOARCH=arm64 go build -o dist/dist-about_arm64 .
           mv README.md dist/README.md
           mv LICENSE dist/LICENSE
           cd dist
-          zip dist-about_Linux_amd64 amd64/dist-about README.md LICENSE
-          zip dist-about_Linux_arm64 arm64/dist-about README.md LICENSE
+          mv dist-about_amd64 dist-about
+          zip dist-about_Linux_amd64 dist-about README.md LICENSE
+          rm dist-about
+          mv dist-about_arm64 dist-about
+          zip dist-about_Linux_arm64 dist-about README.md LICENSE
       - uses: actions/upload-artifact@v3
         with:
           name: Binalys
