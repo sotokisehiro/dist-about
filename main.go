@@ -12,8 +12,8 @@ import (
 
 func deviceInfoMem() (int, int, float64) {
 	vm, _ := mem.VirtualMemory()
-	vmT := vm.Total / 100000
-	vmF := vm.Free / 100000
+	vmT := vm.Total / 1000 / 1000
+	vmF := vm.Free / 1000 / 1000
 	return int(vmT), int(vmF), vm.UsedPercent
 }
 
@@ -43,10 +43,10 @@ ddxddx*N*+?=Nxddxdxd)    (dxdddddO*+?L=XOdxdddN
 `
 	vmT, vmF, vmP := deviceInfoMem()
 	template = strings.Replace(template, "[DEVICE]", "OS"+gocolor.Defalt(": open.Yellow.os")+"\u001b[33m", 1)
-	template = strings.Replace(template, "[MEMORY]", "Memory"+gocolor.Defalt(": "+fmt.Sprint((vmT-vmF)/1000)+"MiB/"+fmt.Sprint(vmT/1000)+"MiB ("+strconv.FormatFloat(vmP, 'f', 2, 64)+"% Used)")+"\u001b[33m", 1)
+	template = strings.Replace(template, "[MEMORY]", "Memory"+gocolor.Defalt(": "+fmt.Sprint(vmT-vmF)+"MiB/"+fmt.Sprint(vmT)+"MiB ("+strconv.FormatFloat(vmP, 'f', 2, 64)+"% Used)")+"\u001b[33m", 1)
 	infos, _ := cpu.Info()
 	for _, info := range infos {
-		template = strings.Replace(template, "[CPU]", strings.Replace("CPU"+gocolor.Defalt(": "+info.ModelName)+"\u001b[33m", "       ", "", 1), 1) // Important space
+		template = strings.Replace(template, "[CPU]", strings.Replace("CPU"+gocolor.Defalt(": "+info.ModelName)+"\u001b[33m", "       ", "", 1), 1)
 	}
 	println(gocolor.Yellow(template) + "\n")
 }
